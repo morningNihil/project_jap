@@ -15,14 +15,10 @@ const PASSWORD = document.querySelector('#floatingPassword')
 
         })
     })
-//     function showAlertSuccess() {
-//     document.getElementById("alert-success").classList.add("show");
-// } 
-// not needed
 
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
-    setTimeout(() => { window.location.href = "index.html"; }, 4000);
+    setTimeout(() => { window.location.href = "index.html"; }, 3500);
 }
 
 
