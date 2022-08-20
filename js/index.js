@@ -8,9 +8,8 @@ const PASSWORD = document.querySelector('#floatingPassword')
         LOGINBTN.addEventListener('click', (event) => {
         event.preventDefault();
         if (Array.from(INPUT).some ( input => input.value == '') || PASSWORD.value.length < 6)  {   
-            showAlertError();  
+            showAlertError(); 
         } else {
-            // showAlertSuccess() 
             window.location.href = "home.html";
         }
 
@@ -23,6 +22,7 @@ const PASSWORD = document.querySelector('#floatingPassword')
 
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
+    setTimeout(() => { window.location.href = "index.html"; }, 4000);
 }
 
 
