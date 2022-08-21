@@ -14,7 +14,7 @@ function showCars(cars) {
             <p>${cars.description}</p>
         </div>
             <div class="productDescription d-flex justify-content-between">
-                <p class="productSold">Vendidos: <span class="quantitySold">123</span></p>
+                <p class="productSold">Vendidos: ${cars.soldCount}</p>
                 <div class="productPrice">
                     <span class="currency">${cars.currency}</span>
                     <span class="price">${cars.cost}</span>
