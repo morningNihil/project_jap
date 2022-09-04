@@ -3,13 +3,13 @@ const URL = 'https://japceibal.github.io/emercado-api/cats_products/'+ window.lo
 const ORDER_ASC_BY_PRICE = "▼$";
 const ORDER_DESC_BY_PRICE = "▲$";
 const ORDER_BY_PROD_SOLD = "Vendidos";
-let currentCategoriesArray = [];
+let currentProductArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
 
-function sortCategories(criteria, array){
+function sortProduct(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_PRICE)
     {
@@ -104,8 +104,8 @@ productDescription();
 function showProducts(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let product = currentCategoriesArray[i];
+    for(let i = 0; i < currentProductArray.length; i++){
+        let product = currentProductArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
@@ -137,14 +137,14 @@ function showProducts(){
     }
 }
 
-function sortAndShowCategories(sortCriteria, categoriesArray){
+function sortAndShowProduct(sortCriteria, ProductArray){
     currentSortCriteria = sortCriteria;
 
-    if(categoriesArray != undefined){
-        currentCategoriesArray = categoriesArray;
+    if(ProductArray != undefined){
+        currentProductArray = ProductArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    currentProductArray = sortProduct(currentSortCriteria, currentProductArray);
 
     //Muestro las categorías ordenadas
     showProducts();
@@ -153,22 +153,22 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            currentCategoriesArray = resultObj.data.products
+            currentProductArray = resultObj.data.products
             showProducts()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_ASC_BY_PRICE);
+        sortAndShowProduct(ORDER_ASC_BY_PRICE);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_DESC_BY_PRICE);
+        sortAndShowProduct(ORDER_DESC_BY_PRICE);
     });
 
     document.getElementById("sortBySold").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_BY_PROD_SOLD);
+        sortAndShowProduct(ORDER_BY_PROD_SOLD);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
