@@ -40,6 +40,13 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+// function setCatName(name) {
+//     localStorage.setItem("catName", name);
+//     window.location = "products.html"
+// } // investigar como agregar al local storage el name de la categoria cuando se hace click en una categoria, para poder agarrar ese name y ponerlo en la description de products
+
+
+
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
@@ -50,7 +57,7 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id})"  class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">

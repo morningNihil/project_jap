@@ -1,29 +1,30 @@
 const URL = 'https://japceibal.github.io/emercado-api/cats_products/'+ window.localStorage.getItem('catID') + '.json';
 
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_ASC_BY_PRICE = "▼$";
+const ORDER_DESC_BY_PRICE = "▲$";
+const ORDER_BY_PROD_SOLD = "Vendidos";
 let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+
 function sortCategories(criteria, array){
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
+    if (criteria === ORDER_ASC_BY_PRICE)
     {
         result = array.sort(function(a, b) {
             if ( a.cost < b.cost ){ return -1; }
             if ( a.cost > b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_NAME){
+    }else if (criteria === ORDER_DESC_BY_PRICE){
         result = array.sort(function(a, b) {
             if ( a.cost > b.cost ){ return -1; }
             if ( a.cost < b.cost ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
+    }else if (criteria === ORDER_BY_PROD_SOLD){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
@@ -36,6 +37,21 @@ function sortCategories(criteria, array){
 
     return result;
 }
+
+function productDescription() {
+    let htmlProductDescription = "";
+    htmlProductDescription += `<div><h1>Productos</h1>
+    <p>Verás aqui todos los productos de la categoria seleccionada. <span class="productos"></span></p></div>
+    `
+
+    document.getElementById('productDesc').innerHTML = htmlProductDescription;
+
+};
+
+// add to product descrption produc name from loctal storage if we ever manage to save it
+
+productDescription();
+
 
 
 
@@ -117,7 +133,7 @@ function showProducts(){
             
         }
 
-        document.getElementById("carList").innerHTML = htmlContentToAppend;
+        document.getElementById("productList").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -144,15 +160,15 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_ASC_BY_NAME);
+        sortAndShowCategories(ORDER_ASC_BY_PRICE);
     });
 
     document.getElementById("sortDesc").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_DESC_BY_NAME);
+        sortAndShowCategories(ORDER_DESC_BY_PRICE);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
-        sortAndShowCategories(ORDER_BY_PROD_COUNT);
+    document.getElementById("sortBySold").addEventListener("click", function(){
+        sortAndShowCategories(ORDER_BY_PROD_SOLD);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){

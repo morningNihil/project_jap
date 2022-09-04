@@ -5,12 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // const CHECKBOX = document.querySelector('#rememberMe') I'll check how this works later
     
     const LOGINBTN = document.querySelector('#loginBtn')
-
-     let userStorage = window.localStorage.getItem('username');
-     
-     
-
-        LOGINBTN.addEventListener('click', (event) => {
+        
+    LOGINBTN.addEventListener('click', (event) => {
         event.preventDefault();
         if (Array.from(INPUT).some ( input => input.value == '') || PASSWORD.value.length < 6)  {   
             showAlertError(); 
@@ -24,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
          function addItem(item) {
-             userStorage = item;
+             let userStorage = item;
              window.localStorage.setItem('username', JSON.stringify(userStorage));
              
         }
