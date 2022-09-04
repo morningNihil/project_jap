@@ -118,6 +118,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
+    function getUsername() {
+        let storedUser = localStorage.getItem('username')
+        storedUser = JSON.parse(storedUser)
+        document.getElementById('username').innerHTML = storedUser
+
+    }
+    
+    getUsername();
+
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
