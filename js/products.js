@@ -52,54 +52,10 @@ function productDescription() {
 
 productDescription();
 
-
-
-
-
-
-    // document.addEventListener('DOMContentLoaded', async function() {
-    // const addCars = document.querySelector('#carList')
-    // const getCars = await getJSONData(URL);
-
-    // getCars.data.products.forEach(car => {
-            //addCars.innerHTML += showProducts(car)
-
-                
-
-    //         };
-        
-    // });
-    // })
-
-
-
-    // function showProducts(car) {
-    
-    //     return`
-    //     <div class="row shadow p-0 rounded overflow-hidden mb-2">
-    //         <div class="col-3 p-0">
-    //             <img class="img-fluid" src=${car.image} alt="">
-    //         </div>
-    //         <div class="col-9 d-flex flex-column justify-content-between">
-    //          <div class="productContent">
-    //             <h4>${car.name}</h3>
-    //             <p>${car.description}</p>
-    //         </div>
-    //             <div class="productDescription d-flex justify-content-between">
-    //                 <p class="productSold">Vendidos: ${car.soldCount}</p>
-    //                 <div class="productPrice">
-    //                     <span class="currency">${car.currency}</span>
-    //                     <span class="price">${car.cost}</span>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    //     `
-    //     }
-
-
-
-
+function setProductID(productID) {
+    localStorage.setItem("id", productID);
+    window.location = "product-info.html"
+}
 
 function showProducts(){
 
@@ -111,7 +67,7 @@ function showProducts(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <div class="row shadow p-0 rounded overflow-hidden mb-2">
+        <div onclick="setProductID(${product.id})"class="row shadow p-0 rounded overflow-hidden mb-2 list-group-item-action cursor-active">
             <div class="col-3 p-0">
                 <img class="img-fluid" src=${product.image} alt="">
             </div>
@@ -150,11 +106,19 @@ function sortAndShowProduct(sortCriteria, ProductArray){
     showProducts();
 }
 
+function getUsername() {
+    let storedUser = localStorage.getItem('username')
+    storedUser = JSON.parse(storedUser)
+    document.getElementById('username').innerHTML = storedUser
+
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductArray = resultObj.data.products
-            showProducts()
+            showProducts();
+            getUsername();
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -204,14 +168,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showProducts();
     });
 
-    function getUsername() {
-        let storedUser = localStorage.getItem('username')
-        storedUser = JSON.parse(storedUser)
-        document.getElementById('username').innerHTML = storedUser
-
-    }
-
-    getUsername();
+    
 });
 
 

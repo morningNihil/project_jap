@@ -188,3 +188,13 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.widthControl {
+  
+  width: 50em;
+}
+
+.carousel-button {
+  color: black;
+  background-color: black;
+}

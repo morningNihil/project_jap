@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     function getUsername() {
         let storedUser = localStorage.getItem('username')
         storedUser = JSON.parse(storedUser)
-        document.getElementById('username').innerHTML = storedUser
+        document.getElementById('username').innerHTML = storedUser;
 
     }
     
