@@ -1,6 +1,11 @@
 const PRODUCTINFO = "https://japceibal.github.io/emercado-api/products/" + window.localStorage.getItem('id') + '.json';
+const PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/" + window.localStorage.getItem('id') + '.json';
+console.log(PRODUCT_COMMENTS);
 console.log(PRODUCTINFO);
 const CONTAINER = document.getElementById('container')
+const COMMENTSCONT = document.getElementById('commentscont')
+let currentProductInfoArray = [];
+let currentCommentArray = [];
 
 function getUsername() {
             let storedUser = localStorage.getItem('username')
@@ -49,12 +54,10 @@ function showProductInfo(productInfo) {
     
 };
 
- let currentProductArray = [];
-
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
      getJSONData(PRODUCTINFO).then(function(resultObj){
          if (resultObj.status === "ok"){
-             currentProductArray = resultObj.data
+             currentProductInfoArray = resultObj.data
              CONTAINER.innerHTML += showProductInfo(resultObj.data)
              getUsername();
             
@@ -65,6 +68,44 @@ function showProductInfo(productInfo) {
      });
 
 });
+
+
+function showComments(commentInfo) {
+    let commentsData = ""
+        for (let comment of commentInfo){
+        commentsData += `
+        
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+            <p>${comment.score}</p>
+            <p><strong>${comment.user}</strong> el ${comment.dateTime}</p>
+
+            ${comment.description}
+            
+            </div>
+        </div>
+        
+        `
+        
+        
+    } 
+
+    return commentsData
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    getJSONData(PRODUCT_COMMENTS).then(function(resultObjComm){
+        if (resultObjComm.status === "ok"){
+            currentCommentArray = resultObjComm.data
+            COMMENTSCONT.innerHTML += showComments(resultObjComm.data)
+        }
+    });
+});
+
+
+
+
+
 
 
 

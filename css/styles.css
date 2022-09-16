@@ -191,10 +191,17 @@ a.custom-card:hover {
 
 .widthControl {
   
-  width: 50em;
+  width: 40em;
+  
 }
 
-.carousel-button {
-  color: black;
-  background-color: black;
+.widthControl-2 {
+  
+  width: 10em;
 }
+
+.widthControl-3 {
+  width: 20em;
+  height: 5em;
+}
+

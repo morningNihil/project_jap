@@ -44,15 +44,28 @@
       
     </div>
   </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
+  <footer class="text-muted p-3 mb-2">
+    <div id="commentscont">
+      <p>
+        <a class="btn btn-secondary"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Mostrar Comentarios
+        </a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
+      </div>
+      <hr>
+      <div class="mb-3">
+        <h4>Comentar</h4>
+        <label for="exampleFormControlTextarea1" class="form-label">Tu opinion y puntuación</label>
+        <select class="form-select widthControl-2" aria-label="Default select example">
+          <option star-rating selected value="1">1</option>
+          <option star-rating value="2">2</option>
+          <option star-rating value="3">3</option>
+          <option star-rating value="4">4</option>
+          <option star-rating value="5">5</option>
+        </select>
+        <textarea class="form-control widthControl-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <button type="button" class="btn btn-outline-dark">Enviar</button>
+      </div>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
