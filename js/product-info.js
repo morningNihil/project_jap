@@ -102,45 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-// function starSystem() {
-
-    
-//     const SCORE = document.getElementById('starscore');
-//     const FULLSTAR = `<span class="material-symbols-outlined">
-//     star
-//     </span>`
-//     const REGULARSTAR = `<span class="material-symbols-outlined">
-//     star
-//     </span>`
-//     const HALFSTAR = `<span class="material-symbols-outlined">
-//     star_half
-//     </span>`
-
-//     let fullStar = 4;
-//     let stars = 1;
-
-//     for (let index = 0; index < fullStar; index++) {
-//         SCORE.innerHTML = FULLSTAR;
-//     }
-
-//     if (stars - fullStar > 0) {
-//         SCORE.innerHTML = HALFSTAR;
-//         fullStar ++;
-//     }
-
-//     if (fullStar < 5) {
-//         for (let index = fullStar; index < 5; index++) {
-//             SCORE.innerHTML = REGULARSTAR
-            
-//         }
-//     }
-
-    
-    
-// }
-
  function starSystemv2(score) { 
 
      const FULLSTAR = `<span class="fa fa-star checked"></span>`
