@@ -1,7 +1,5 @@
 const PRODUCTINFO = "https://japceibal.github.io/emercado-api/products/" + window.localStorage.getItem('id') + '.json';
 const PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/" + window.localStorage.getItem('id') + '.json';
-console.log(PRODUCT_COMMENTS);
-console.log(PRODUCTINFO);
 const CONTAINER = document.getElementById('container')
 const COMMENTSCONT = document.getElementById('commentscont')
 let currentProductInfoArray = [];
@@ -77,7 +75,7 @@ function showComments(commentInfo) {
         
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
-            <p>${comment.score}</p>
+            <p>${starSystemv2(comment.score)}</p>
             <p><strong>${comment.user}</strong> el ${comment.dateTime}</p>
 
             ${comment.description}
@@ -98,9 +96,77 @@ document.addEventListener("DOMContentLoaded", () => {
         if (resultObjComm.status === "ok"){
             currentCommentArray = resultObjComm.data
             COMMENTSCONT.innerHTML += showComments(resultObjComm.data)
+            
         }
     });
 });
+
+
+
+
+// function starSystem() {
+
+    
+//     const SCORE = document.getElementById('starscore');
+//     const FULLSTAR = `<span class="material-symbols-outlined">
+//     star
+//     </span>`
+//     const REGULARSTAR = `<span class="material-symbols-outlined">
+//     star
+//     </span>`
+//     const HALFSTAR = `<span class="material-symbols-outlined">
+//     star_half
+//     </span>`
+
+//     let fullStar = 4;
+//     let stars = 1;
+
+//     for (let index = 0; index < fullStar; index++) {
+//         SCORE.innerHTML = FULLSTAR;
+//     }
+
+//     if (stars - fullStar > 0) {
+//         SCORE.innerHTML = HALFSTAR;
+//         fullStar ++;
+//     }
+
+//     if (fullStar < 5) {
+//         for (let index = fullStar; index < 5; index++) {
+//             SCORE.innerHTML = REGULARSTAR
+            
+//         }
+//     }
+
+    
+    
+// }
+
+ function starSystemv2(score) { 
+
+     const FULLSTAR = `<span class="fa fa-star checked"></span>`
+     const REGULARSTAR = `<span class="fa fa-star"></span>`
+
+     let starScore = "";
+
+     if (score === 1) {
+         starScore = FULLSTAR + REGULARSTAR + REGULARSTAR + REGULARSTAR + REGULARSTAR;
+            
+     } else if (score === 2) {
+         starScore = FULLSTAR + FULLSTAR + REGULARSTAR + REGULARSTAR + REGULARSTAR + REGULARSTAR ;
+     }  else if (score === 3) {
+         starScore = FULLSTAR + FULLSTAR + FULLSTAR + REGULARSTAR + REGULARSTAR;
+     }  else if (score === 4) {
+         starScore = FULLSTAR + FULLSTAR + FULLSTAR + FULLSTAR + REGULARSTAR;
+     }  else if (score === 5) {
+         starScore = FULLSTAR + FULLSTAR + FULLSTAR + FULLSTAR + FULLSTAR;
+     } 
+
+     
+     return starScore;
+
+
+ }
+
 
 
 
