@@ -2,15 +2,27 @@ const PRODUCTINFO = "https://japceibal.github.io/emercado-api/products/" + windo
 const PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/" + window.localStorage.getItem('id') + '.json';
 const CONTAINER = document.getElementById('container')
 const COMMENTSCONT = document.getElementById('commentscont')
+const ADDITIONALCONTAINER = document.getElementById('relatedProd')
 let currentProductInfoArray = [];
 let currentCommentArray = [];
+let currentAdditionalProductArray = [];
 
 function getUsername() {
-            let storedUser = localStorage.getItem('username')
-            storedUser = JSON.parse(storedUser)
-            document.getElementById('username').innerHTML = storedUser
-    
-};
+    let storedUser = localStorage.getItem('username')
+    storedUser = JSON.parse(storedUser)
+    document.getElementById('username').innerHTML = `
+    <div class="dropdown">
+        <button class="btn btn-dark btn-sm mb-1 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        ${storedUser}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="index.html">Cerrar Sesion</a></li>
+        </ul>
+    </div>`
+
+}
 
 function showProductInfo(productInfo) {
     return ` 
@@ -100,6 +112,45 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    getJSONData(PRODUCTINFO).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            currentAdditionalProductArray = resultObj.data
+            ADDITIONALCONTAINER.innerHTML += showAdditional(resultObj.data.relatedProducts)
+            
+           
+        }
+        
+   
+       
+    });
+
+});
+
+function showAdditional(addInfo) {
+    let addData = ""
+        for (let additional of addInfo) {
+            addData +=  `
+            
+            <div onclick="setProductID(${additional.id})">
+                <img src="${additional.image}" class="widthControl-4">
+                <p>${additional.name}</p>
+                <br>
+            </div>
+            
+
+            `
+        }
+
+        return addData
+}
+
+function setProductID(productID) {
+    localStorage.setItem("id", productID);
+    window.location = "product-info.html"
+}
 
 
  function starSystemv2(score) { 
