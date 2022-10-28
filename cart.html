@@ -38,21 +38,206 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="">
+        <h4 class="d-flex justify-content-center p-4">Carrito de Compras</h4>
+        <h5>Articulos a comprar</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo/Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="cartInfo">
+            
+            <tr>
+              <th id="imgSrc"><img src="" class="widthControl-5"></th>
+                  <th scope="row" id="productName">Name</th>
+                  
+              <td>
+                  <div class="input-group inpup-group-sm inpSize">
+                      <span class="input-group-text valueOfItem" id="valueItem">$</span>
+                      <input type="text" id="unitCount" class="form-control countValue" aria-label="Dollar amount (with dot and two decimal places)" value="">
+
+                      <button type="button" onClick="addUp()" class="btn btn-primary btn-dark btn-addremove">+</button>
+                      <button type="button" onClick="removeSub()" class="btn btn-primary btn-dark btn-addremove">-</button>
+                    </div>
+
+                  
+              </td>
+              
+              <td>
+                  <div class="input-group inpup-group-sm-dark inpSize">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="totalValue" aria-label="Dollar amount (with dot and two decimal places)"  value="">
+                  
+                  </div>
+                  
+                  
+                          
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <form>
+          <h3 class="p-2">Tipo de envio</h3>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="premiumShip">
+            <label class="form-check-label" for="premiumShip">Premium 2 a 5 dias(15%)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="expressShip">
+            <label class="form-check-label" for="expressShip">Express 5 a 8 dias(7%)</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="standardShip">
+            <label class="form-check-label" for="standardShip">Standard 12 a 15 dias(5%)</label>
+          </div>
+          <div class="form-group">
+            <h5 class="p-2">Direccion de envio</h5>
+            
+            <label for="calle">Calle</label>
+            <input type="calle" class="form-control" id="calle" aria-describedby="calleHelp" placeholder="Benito Perez">
+            <small id="calleHelp" class="form-text text-muted"></small>
+            <div class="error"></div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="numeroCalle">Numero</label>
+            <input type="numero" class="form-control" id="numeroCalle" placeholder="4539">
+            <div class="error"></div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="esquina">Esquina</label>
+            <input type="esquinaType" class="form-control" id="esquina" placeholder="Juan Sorrentinos">
+            <div class="error"></div>
+          </div>
+          
+          
+        </form>
+        
+        
+
       </div>
     </div>
-  </main>
-  <footer class="text-muted">
+
+    <br>
+    <hr>
+    <br>
+
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+          Subtotal
+          <p class="font-reduced">Costo unitario del producto por cantidad</p>
+          </div>
+          
+          <p id="subtotalPrev"></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            Costo de Envio
+            <p class="font-reduced">Segun el tipo de envio</p>
+            </div>
+          <p id="shipCost">0</p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total($)
+          <p id="totalPrev">USD 15200</p>
+        </li>
+      </ul>
     </div>
-  </footer>
+    <br>
+    <hr>
+    <br>
+    <div class="container">
+      <p class="fs-4">Forma de pago</p>
+      
+    </div>
+    <div class="container">
+      <p id="selection">No ha seleccionado </p> <p><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Seleccionar</a></p>
+      <div class="error"></div>
+      <p id="modalSelection"></p>
+      
+    </div>
+      
+    
+    
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="creditCard">
+                <label class="form-check-label" for="creditCard">
+                  Tarjeta de crédito
+                </label>
+                <div class="error"></div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Número de tarjeta</label>
+                <input type="text" class="form-control" id="creditCardNumb">
+                
+              </div>
+
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Codigo de seg.</label>
+                <input type="text" class="form-control" id="securityCode">
+              </div>
+
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Vencimiento(MM/AA)</label>
+                <input type="text" class="form-control" id="expireDate">
+              </div>
+
+              <hr>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="bankAccount">
+                <label class="form-check-label" for="bankAccount">
+                  Transferencia bancaria
+                </label>
+                <div class="error"></div>
+              </div>
+
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Número de cuenta</label>
+                <input type="text" class="form-control" id="bankAccountNumb">
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" id="submitCart">Finalizar Compra</button>
+      </div>
+    </div>
+    
+  </main>
+
+  <div id="alertBox">
+    <p></p>
+  </div>
+  
+      
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
