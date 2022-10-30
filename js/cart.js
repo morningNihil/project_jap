@@ -111,9 +111,9 @@ const standardSelector = STANDARSHIP.onchange = function() {
         EXPRESSHIP.removeAttribute('disabled');
         STANDARSHIP.removeAttribute('disabled');
         PREMIUMSHIP.removeAttribute('disabled');
-    } else if (EXPRESSHIP.checked) {
-        STANDARD.onclick = PREMIUMSHIP.disabled = true; 
-        STANDARD.onclick = EXPRESSHIP.disabled = true;
+    } else if (STANDARSHIP.checked) {
+        STANDARSHIP.onclick = PREMIUMSHIP.disabled = true; 
+        STANDARSHIP.onclick = EXPRESSHIP.disabled = true;
     }
 }
 const addUp = () => {
