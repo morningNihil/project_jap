@@ -23,16 +23,19 @@ document.addEventListener("DOMContentLoaded", function(){
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="my-profile.html" >Mi perfil</a></li>
                 <li><a class="dropdown-item" href="index.html">Cerrar Sesion</a></li>
             </ul>
         </div>`
 
     }
     
+    
     getUsername();   
 
 });
+
+
 
 
 

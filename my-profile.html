@@ -52,9 +52,42 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <h1 class="m-3">Perfil</h1>
+      <hr>
+      
+     
+    </div>
+    <div class="container">
+      <span class="text">Primer Nombre</span>
+      <input type="text" aria-label="First name" class="form-control" id="firstName">
+      <div class="error fs-6 fw-lighter"></div>
+
+      <span class="text">Primer Apellido</span>
+      <input type="text" aria-label="First name" class="form-control" id="lastName">
+      <div class="error fs-6 fw-lighter"></div>
+
+    </div>
+    <div class="container inputsGroup">
+      
+
+      <span class="text">Segundo nombre</span>
+      <input type="text" aria-label="First name" class="form-control" id="secondName">
+
+      
+
+      <span class="text">Segundo Apellido</span>
+      <input type="text" aria-label="First name" class="form-control" id="secLastName">
+
+      <span class="text">Telefono de Contacto ☎</span>
+      <input type="text" aria-label="First name" class="form-control" id="phoneNumber" value="">
+      
+
+      <span class="text">E-mail 📧</span>
+      <input type="text" aria-label="First name" class="form-control" id="emailAddress" disabled>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto m-4">
+      <button class="btn btn-primary" onclick="setInfo()" type="button" id="saveProfile">Guardar</button>
+      
     </div>
   </main>
   <footer class="text-muted">

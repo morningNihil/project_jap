@@ -180,7 +180,7 @@ CREDITCARD.onchange = function() {
     setSuccess(MODAL);
     } 
 }
-
+console.log();
 BANKACC.onchange = function() {
     if (BANKACC.checked) {
     BANKACCNUMBER.removeAttribute('disabled');
